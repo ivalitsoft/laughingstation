@@ -15,9 +15,9 @@
 */
 
 	define('QA_MYSQL_HOSTNAME', 'localhost'); // try '127.0.0.1' or 'localhost' if MySQL on same server
-	define('QA_MYSQL_USERNAME', 'ivalit_ls');
+	define('QA_MYSQL_USERNAME', 'ivalitho_ls');
 	define('QA_MYSQL_PASSWORD', 'ivalit@321');
-	define('QA_MYSQL_DATABASE', 'db_ls');
+	define('QA_MYSQL_DATABASE', 'ivalitho_ls');
 
 	define('QA_MYSQL_TABLE_PREFIX', 'qa_');	
 	define('QA_EXTERNAL_USERS', false);
