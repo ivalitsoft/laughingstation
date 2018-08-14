@@ -1,6 +1,10 @@
 <?php
-
 /*
+
+	File: king-include/king-page-not-found.php
+	Description: Controller for page not found (error 404)
+
+
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
 	as published by the Free Software Foundation; either version 2
@@ -14,12 +18,24 @@
 	More about this license: LICENCE.html
 */
 
+	if (!defined('QA_VERSION')) { // don't allow this page to be requested directly from browser
+		header('Location: ../');
+		exit;
+	}
 
-//	Set base path here so this works with symbolic links for multiple installations
+	require_once QA_INCLUDE_DIR.'king-app/format.php';
 
-	define('QA_BASE_DIR', dirname(empty($_SERVER['SCRIPT_FILENAME']) ? __FILE__ : $_SERVER['SCRIPT_FILENAME']).'/');
-	
-	require 'king-include/king-index.php';
+
+	header('HTTP/1.0 404 Not Found');
+
+	qa_set_template('not-found');
+
+	$qa_content=qa_content_prepare();
+	$qa_content['error']=qa_lang_html('main/page_not_found');
+	$qa_content['suggest_next']=qa_html_suggest_qs_tags(qa_using_tags());
+
+
+	return $qa_content;
 
 
 /*

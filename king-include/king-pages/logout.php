@@ -1,6 +1,10 @@
 <?php
-
 /*
+
+	File: king-include/king-page-logout.php
+	Description: Controller for logout page (not much to do)
+
+
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
 	as published by the Free Software Foundation; either version 2
@@ -14,12 +18,19 @@
 	More about this license: LICENCE.html
 */
 
+	if (!defined('QA_VERSION')) { // don't allow this page to be requested directly from browser
+		header('Location: ../');
+		exit;
+	}
 
-//	Set base path here so this works with symbolic links for multiple installations
 
-	define('QA_BASE_DIR', dirname(empty($_SERVER['SCRIPT_FILENAME']) ? __FILE__ : $_SERVER['SCRIPT_FILENAME']).'/');
-	
-	require 'king-include/king-index.php';
+	if (QA_FINAL_EXTERNAL_USERS)
+		qa_fatal_error('User logout is handled by external code');
+
+	if (qa_is_logged_in())
+		qa_set_logged_in_user(null);
+
+	qa_redirect(''); // back to home page
 
 
 /*

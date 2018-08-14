@@ -1,6 +1,10 @@
 <?php
-
 /*
+
+	File: king-include/king-db-options.php
+	Description: Database-level access to table containing admin options
+
+
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
 	as published by the Free Software Foundation; either version 2
@@ -14,12 +18,22 @@
 	More about this license: LICENCE.html
 */
 
+	if (!defined('QA_VERSION')) { // don't allow this page to be requested directly from browser
+		header('Location: ../');
+		exit;
+	}
 
-//	Set base path here so this works with symbolic links for multiple installations
 
-	define('QA_BASE_DIR', dirname(empty($_SERVER['SCRIPT_FILENAME']) ? __FILE__ : $_SERVER['SCRIPT_FILENAME']).'/');
-	
-	require 'king-include/king-index.php';
+	function qa_db_set_option($name, $value)
+/*
+	Set option $name to $value in the database
+*/
+	{
+		qa_db_query_sub(
+			'REPLACE ^options (title, content) VALUES ($, $)',
+			$name, $value
+		);
+	}
 
 
 /*

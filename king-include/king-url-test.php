@@ -1,6 +1,10 @@
 <?php
-
 /*
+
+	File: king-include/king-url-test.php
+	Description: Sits in an iframe and shows a green page with word 'OK'
+
+
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
 	as published by the Free Software Foundation; either version 2
@@ -14,12 +18,16 @@
 	More about this license: LICENCE.html
 */
 
+	if (qa_gpc_to_string(@$_GET['param'])==QA_URL_TEST_STRING) {
+		require_once QA_INCLUDE_DIR.'king-app/admin.php';
 
-//	Set base path here so this works with symbolic links for multiple installations
-
-	define('QA_BASE_DIR', dirname(empty($_SERVER['SCRIPT_FILENAME']) ? __FILE__ : $_SERVER['SCRIPT_FILENAME']).'/');
-	
-	require 'king-include/king-index.php';
+		echo '<html><body style="margin:0; padding:0;">';
+		echo '<table width="100%" height="100%" cellspacing="0" cellpadding="0">';
+		echo '<tr valign="middle"><td align="center" style="border-style:solid; border-width:1px; background-color:#fff; ';
+		echo qa_admin_url_test_html();
+		echo '/td></tr></table>';
+		echo '</body></html>';
+	}
 
 
 /*
