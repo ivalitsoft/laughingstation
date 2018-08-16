@@ -14,10 +14,10 @@
 	More about this license: LICENSE.html
 */
 
-	define('QA_MYSQL_HOSTNAME', '127.0.0.1'); // try '127.0.0.1' or 'localhost' if MySQL on same server
-	define('QA_MYSQL_USERNAME', 'your_mysql_username');
-	define('QA_MYSQL_PASSWORD', 'your_mysql_password');
-	define('QA_MYSQL_DATABASE', 'your_mysql_db_name');
+	define('QA_MYSQL_HOSTNAME', 'localhost'); // try '127.0.0.1' or 'localhost' if MySQL on same server
+	define('QA_MYSQL_USERNAME', 'ivalit_ls');
+	define('QA_MYSQL_PASSWORD', 'ivalit@321');
+	define('QA_MYSQL_DATABASE', 'db_ls');
 
 	define('QA_MYSQL_TABLE_PREFIX', 'qa_');	
 	define('QA_EXTERNAL_USERS', false);
